@@ -1,43 +1,25 @@
-import { useEffect } from 'react';
-import { Header } from './components/Header';
-import { Hero } from './components/Hero';
-import { About } from './components/About';
-import { Education } from './components/Education';
-import { Services } from './components/Services';
-import { Pricing } from './components/Pricing';
-import { Reviews } from './components/Reviews';
-import { FAQ } from './components/FAQ';
-import { Contact } from './components/Contact';
-import { Footer } from './components/Footer';
+import { Header } from "./sections/Header";
+import { Hero } from "./sections/Hero";
+import { About } from "./sections/About";
+import { Guarantees } from "./sections/Guarantees";
+import { Services } from "./sections/Services";
+import { Reviews } from "./sections/Reviews";
+import { Contact } from "./sections/Contact";
+import { Footer } from "./sections/Footer";
 
 export default function App() {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-    );
-    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <div className="min-h-screen bg-[#111] text-[#eee]">
+    <div className="min-h-screen bg-black-bg">
       <Header />
       <main>
         <Hero />
         <About />
-        <Education />
+        <Guarantees />
         <Services />
-        <Pricing />
         <Reviews />
-        <FAQ />
         <Contact />
       </main>
       <Footer />
     </div>
   );
-}
+} 
