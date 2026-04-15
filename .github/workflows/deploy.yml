@@ -22,7 +22,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: 'Юрист Колосова Мария Сергеевна. Краснодар (10)'
-        run: npm ci
+        run: npm install
 
       - name: Build
         working-directory: 'Юрист Колосова Мария Сергеевна. Краснодар (10)'
