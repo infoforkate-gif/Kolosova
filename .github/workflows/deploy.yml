@@ -1,0 +1,38 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: 'Юрист Колосова Мария Сергеевна. Краснодар (10)/package.json'
+
+      - name: Install dependencies
+        working-directory: 'Юрист Колосова Мария Сергеевна. Краснодар (10)'
+        run: npm ci
+
+      - name: Build
+        working-directory: 'Юрист Колосова Мария Сергеевна. Краснодар (10)'
+        run: npm run build
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: 'Юрист Колосова Мария Сергеевна. Краснодар (10)/dist/'
+          server-dir: /krasnodar-advokat.ru/
