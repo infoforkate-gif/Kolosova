@@ -35,4 +35,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: 'Юрист Колосова Мария Сергеевна. Краснодар (10)/dist/'
-          server-dir: /var/www/www-root/data/www/krasnodar-advokat.ru/
+          server-dir: /
